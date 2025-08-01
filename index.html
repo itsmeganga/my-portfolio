@@ -6,77 +6,78 @@
     <title>Ganga Ramesh - Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
-        /* --- New Color Palette ---
-           Background: #161625 (Deep Purple)
-           UI Elements: #1E1E3F (Light Purple)
-           Accent: #FF6B6B (Vibrant Pink)
-           Highlight: #E6A4B4 (Soft Pink)
-           Text: #FDF0F0 (Cream White)
+        /* --- High-Contrast Color Palette ---
+           Background: #000000 (Pure Black)
+           Primary: #e94560 (Fiery Rose)
+           UI Elements: #111111 (Dark Gray)
+           Text: #f0e5cf (Cream)
         */
         body { 
             font-family: 'Inter', sans-serif; 
-            background-color: #161625;
-            color: #FDF0F0; 
+            background-color: #000000;
+            color: #f0e5cf; 
             overflow-x: hidden;
         }
-        #bg-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
         .header-glow {
-            transition: box-shadow 0.3s ease-in-out;
+            transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
         .scrolled .header-glow {
-            box-shadow: 0 2px 20px rgba(255, 107, 107, 0.15); /* Pink Glow */
+            background-color: rgba(17, 17, 17, 0.8); /* Dark gray with blur */
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(233, 69, 96, 0.1);
         }
-        @keyframes slideInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
-        .animate-slideInUp { animation: slideInUp 0.7s ease-out forwards; }
-        .animate-float { animation: float 6s ease-in-out infinite; }
-        .fade-in-section { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        @keyframes slideInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-12px); } 100% { transform: translateY(0px); } }
+        .animate-slideInUp { animation: slideInUp 0.8s ease-out forwards; }
+        .animate-float { animation: float 5s ease-in-out infinite; }
+        .fade-in-section { opacity: 0; transform: translateY(25px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
         .fade-in-section.is-visible { opacity: 1; transform: translateY(0); }
         
         /* --- Theme-specific classes --- */
-        .gradient-text { background: linear-gradient(to right, #FF6B6B, #E6A4B4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .text-pink { color: #FF6B6B; }
-        .bg-light-purple { background-color: #1E1E3F; }
-        .hover-text-pink:hover { color: #FF6B6B; }
-        .border-pink { border-color: #FF6B6B; }
-        .hover-bg-pink-tint:hover { background-color: rgba(255, 107, 107, 0.1); }
+        .gradient-text { background: linear-gradient(to right, #e94560, #f0e5cf); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .text-rose { color: #e94560; }
+        .bg-dark-gray { background-color: #111111; }
+        .hover-text-rose:hover { color: #e94560; }
+        .border-rose { border-color: #e94560; }
+        .hover-bg-rose-tint:hover { background-color: rgba(233, 69, 96, 0.1); }
+        .bg-rose { background-color: #e94560; }
+        .text-black { color: #000000; }
+
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(233, 69, 96, 0.15);
+        }
     </style>
 </head>
 <body>
-    <canvas id="bg-canvas"></canvas>
-
-    <header id="main-header" class="bg-[#161625]/50 backdrop-blur-lg fixed top-0 left-0 right-0 z-40 border-b border-gray-800/50 header-glow">
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-40 header-glow">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="text-2xl font-bold text-white">Ganga Ramesh</a>
             <nav class="hidden md:flex items-center space-x-8">
-                <a href="#about" class="hover-text-pink">About</a>
-                <a href="#experience" class="hover-text-pink">Experience</a>
-                <a href="#projects" class="hover-text-pink">Projects</a>
-                <a href="#contact" class="hover-text-pink">Contact</a>
-                <a href="GR.pdf" target="_blank" class="text-pink border border-pink px-4 py-2 rounded-md hover-bg-pink-tint">View Resume</a>
+                <a href="#about" class="hover-text-rose">About</a>
+                <a href="#experience" class="hover-text-rose">Experience</a>
+                <a href="#projects" class="hover-text-rose">Projects</a>
+                <a href="#contact" class="hover-text-rose">Contact</a>
+                <a href="GR.pdf" target="_blank" class="text-rose border border-rose px-4 py-2 rounded-md hover-bg-rose-tint">View Resume</a>
             </nav>
             <button id="mobile-menu-button" class="md:hidden text-white"><i class="fas fa-bars text-2xl"></i></button>
         </div>
     </header>
 
-    <div id="mobile-menu" class="fixed top-0 right-0 h-full w-2/3 max-w-sm bg-light-purple/90 backdrop-blur-lg z-50 transform translate-x-full transition-transform ease-in-out md:hidden">
+    <div id="mobile-menu" class="fixed top-0 right-0 h-full w-2/3 max-w-sm bg-dark-gray/95 backdrop-blur-lg z-50 transform translate-x-full transition-transform ease-in-out md:hidden">
         <div class="p-8">
             <button id="close-menu-button" class="absolute top-6 right-6 text-white"><i class="fas fa-times text-2xl"></i></button>
             <nav class="flex flex-col space-y-8 mt-12 text-lg">
-                <a href="#about" class="hover-text-pink mobile-menu-link">About</a>
-                <a href="#experience" class="hover-text-pink mobile-menu-link">Experience</a>
-                <a href="#projects" class="hover-text-pink mobile-menu-link">Projects</a>
-                <a href="#contact" class="hover-text-pink mobile-menu-link">Contact</a>
-                <a href="GR.pdf" target="_blank" class="mt-4 inline-block text-pink border border-pink px-4 py-2 rounded-md hover-bg-pink-tint">View Resume</a>
+                <a href="#about" class="hover-text-rose mobile-menu-link">About</a>
+                <a href="#experience" class="hover-text-rose mobile-menu-link">Experience</a>
+                <a href="#projects" class="hover-text-rose mobile-menu-link">Projects</a>
+                <a href="#contact" class="hover-text-rose mobile-menu-link">Contact</a>
+                <a href="GR.pdf" target="_blank" class="mt-4 inline-block text-rose border border-rose px-4 py-2 rounded-md hover-bg-rose-tint">View Resume</a>
             </nav>
         </div>
     </div>
@@ -84,133 +85,98 @@
     <main class="pt-24 relative z-10">
         <section id="hero" class="container mx-auto px-6 py-20 md:py-32 text-center">
             <div class="max-w-4xl mx-auto">
-                <img src="./your-photo.jpg" onerror="this.onerror=null;this.src='https://placehold.co/150x150/161625/FF6B6B?text=GR';" alt="Ganga Ramesh" class="w-36 h-36 rounded-full object-cover mx-auto mb-6 border-4 border-pink shadow-lg animate-float">
+                <img src="ganga-photo.jpg" onerror="this.onerror=null;this.src='https://placehold.co/150x150/000000/e94560?text=GR';" alt="Ganga Ramesh" class="w-36 h-36 rounded-full object-cover mx-auto mb-6 border-4 border-rose shadow-lg animate-float">
                 <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4 animate-slideInUp">Hi, I'm Ganga Ramesh</h1>
-                <p class="text-lg md:text-xl text-[#E6A4B4] mb-8 animate-slideInUp">I build <span class="gradient-text font-semibold">user-centric software solutions</span> and explore the domain of AI.</p>
-                <div class="flex justify-center items-center space-x-4 animate-slideInUp" style="animation-delay: 0.3s;">
-                    <a href="#projects" class="bg-pink text-[#161625] font-bold py-3 px-8 rounded-md transition-transform transform hover:scale-105">View My Work</a>
-                    <a href="https://github.com/Gangar" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd" /></svg></a>
-                    <a href="https://www.linkedin.com/in/itsmeganga/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                <p class="text-lg md:text-xl text-[#f0e5cf] mb-8 animate-slideInUp" style="animation-delay: 0.1s;">I build <span class="gradient-text font-semibold">user-centric software solutions</span> and explore the domain of AI.</p>
+                <div class="flex justify-center items-center space-x-6 animate-slideInUp" style="animation-delay: 0.2s;">
+                    <a href="#projects" class="bg-rose text-black font-bold py-3 px-8 rounded-md transition-transform transform hover:scale-105">View My Work</a>
+                    <a href="https://github.com/Gangar" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white"><i class="fab fa-github text-3xl"></i></a>
+                    <a href="https://www.linkedin.com/in/itsmeganga/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin text-3xl"></i></a>
                 </div>
             </div>
         </section>
-        <section id="about" class="py-20 md:py-32 fade-in-section"><div class="container mx-auto px-6"><div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 items-center"><div><h2 class="text-3xl font-bold text-white mb-4">About Me</h2><p class="text-[#E6A4B4] mb-4">A B.Tech student intensely mastering Full Stack development while advancing skills in Data Science and Machine learning. I focus on writing reusable, testable, and efficient code, integrating technical expertise, project management, and clear communication to deliver user-centric software solutions. Additionally, I am enhancing my skills in the domain of AI.</p></div><div class="relative mx-auto w-80 h-80 md:w-96 md:h-96"><img src="./your-photo.jpg" onerror="this.onerror=null;this.src='https://placehold.co/400x400/161625/FF6B6B?text=GR';" alt="Ganga Ramesh" class="rounded-lg shadow-2xl z-10 relative w-full h-full object-cover"><div class="absolute top-0 -left-4 w-full h-full border-2 border-pink rounded-lg transform -rotate-3 z-0"></div></div></div></div></section>
-        <section id="experience" class="py-20 md:py-32 fade-in-section"><div class="container mx-auto px-6"><h2 class="text-3xl font-bold text-white text-center mb-12">Work Experience</h2><div class="max-w-4xl mx-auto bg-light-purple/50 backdrop-blur-sm rounded-lg border border-gray-800 shadow-lg overflow-hidden md:flex"><div class="md:w-1/3 p-8 flex items-center justify-center bg-[#161625]/20"><h3 class="text-2xl font-bold text-white">SISCO</h3></div><div class="md:w-2/3 p-8"><h3 class="text-xl font-bold text-pink">Intern, On-Site-office in Jubail, Saudi Arabia</h3><p class="text-sm text-[#E6A4B4]">Specialized Industrial Services Co. LTD.</p><p class="mt-4 text-[#E6A4B4]">Triaged and resolved high-priority production incidents, reducing Mean Time To Resolution (MTTR) for critical alerts by over 30%. Enhanced system stability by developing and deploying Python/Bash automation scripts for health checks, log analysis, and failure recovery.</p></div></div></div></section>
+        
+        <section id="about" class="py-20 md:py-32 fade-in-section"><div class="container mx-auto px-6"><div class="max-w-4xl mx-auto grid md:grid-cols-5 gap-12 items-center">
+            <div class="md:col-span-3"><h2 class="text-3xl font-bold text-white mb-4">About Me</h2><p class="text-[#f0e5cf] mb-4 leading-relaxed">A B.Tech student intensely mastering Full Stack development while advancing skills in Data Science and Machine learning. I focus on writing reusable, testable, and efficient code, integrating technical expertise, project management, and clear communication to deliver user-centric software solutions. Additionally, I am enhancing my skills in the domain of AI.</p></div>
+            <div class="md:col-span-2 relative mx-auto w-64 h-64 md:w-full md:h-auto"><img src="ganga-photo.jpg" onerror="this.onerror=null;this.src='https://placehold.co/400x400/000000/e94560?text=GR';" alt="Ganga Ramesh" class="rounded-lg shadow-2xl z-10 relative w-full h-full object-cover"><div class="absolute -top-3 -left-3 w-full h-full border-2 border-rose rounded-lg transform -rotate-3 z-0"></div></div>
+        </div></div></section>
+        
+        <section id="experience" class="py-20 md:py-32 fade-in-section bg-dark-gray"><div class="container mx-auto px-6"><h2 class="text-3xl font-bold text-white text-center mb-12">Work Experience</h2><div class="max-w-4xl mx-auto bg-black backdrop-blur-sm rounded-lg border border-gray-800 shadow-lg overflow-hidden md:flex items-center"><div class="md:w-1/3 p-8 flex items-center justify-center"><h3 class="text-3xl font-bold text-white">SISCO</h3></div><div class="md:w-2/3 p-8 border-t md:border-t-0 md:border-l border-gray-800"><h3 class="text-xl font-bold text-rose">Intern, On-Site</h3><p class="text-sm text-[#f0e5cf] mb-4">Specialized Industrial Services Co. LTD.</p><p class="text-[#f0e5cf] leading-relaxed">Triaged and resolved high-priority production incidents, reducing Mean Time To Resolution (MTTR) for critical alerts by over 30%. Enhanced system stability by developing and deploying Python/Bash automation scripts for health checks, log analysis, and failure recovery.</p></div></div></div></section>
         
         <section id="projects" class="py-20 md:py-32 fade-in-section">
             <div class="container mx-auto px-6">
                 <h2 class="text-3xl font-bold text-white text-center mb-12">Things I've Built</h2>
                 <div class="max-w-4xl mx-auto grid md:grid-cols-1 gap-8">
-                    <div class="project-card bg-light-purple/50 backdrop-blur-sm rounded-lg overflow-hidden shadow-lg hover:shadow-pink/20 transition-all duration-300 border border-gray-800 p-6 flex flex-col">
+                    <div class="project-card bg-dark-gray rounded-lg overflow-hidden shadow-lg border border-gray-800 p-6 flex flex-col">
                         <h3 class="text-xl font-bold text-white mb-2">Distributed Video Communication & Streaming Platform</h3>
-                        <p class="text-[#E6A4B4] mb-4 text-sm">Architected a unified video platform for on-demand streaming and real-time multi-node video calling, optimizing for low-latency and high availability on a local network.</p>
-                        <div class="flex flex-wrap gap-2 mt-auto"><span class="bg-pink/10 text-pink text-xs font-semibold px-2.5 py-0.5 rounded-full">Python</span><span class="bg-pink/10 text-pink text-xs font-semibold px-2.5 py-0.5 rounded-full">Flask</span><span class="bg-pink/10 text-pink text-xs font-semibold px-2.5 py-0.5 rounded-full">Nginx</span><span class="bg-pink/10 text-pink text-xs font-semibold px-2.5 py-0.5 rounded-full">Distributed Systems</span></div>
+                        <p class="text-[#f0e5cf] mb-4 text-sm leading-relaxed">Architected a unified video platform for on-demand streaming and real-time multi-node video calling, optimizing for low-latency and high availability on a local network.</p>
+                        <div class="flex flex-wrap gap-2 mt-auto pt-4"><span class="bg-rose/10 text-rose text-xs font-semibold px-2.5 py-0.5 rounded-full">Python</span><span class="bg-rose/10 text-rose text-xs font-semibold px-2.5 py-0.5 rounded-full">Flask</span><span class="bg-rose/10 text-rose text-xs font-semibold px-2.5 py-0.5 rounded-full">Nginx</span><span class="bg-rose/10 text-rose text-xs font-semibold px-2.5 py-0.5 rounded-full">Distributed Systems</span></div>
                     </div>
-                    <div class="project-card bg-light-purple/50 backdrop-blur-sm rounded-lg overflow-hidden shadow-lg hover:shadow-pink/20 transition-all duration-300 border border-gray-800 p-6 flex flex-col">
+                    <div class="project-card bg-dark-gray rounded-lg overflow-hidden shadow-lg border border-gray-800 p-6 flex flex-col">
                         <h3 class="text-xl font-bold text-white mb-2">Pneumonia Detection in Chest X-Rays</h3>
-                        <p class="text-[#E6A4B4] mb-4 text-sm">Engineered a diagnostic deep learning model for binary classification of pneumonia from chest X-rays, architecting a CNN that leverages a VGG16 backbone and achieving 93% accuracy.</p>
-                        <div class="flex flex-wrap gap-2 mt-auto"><span class="bg-pink/10 text-pink text-xs font-semibold px-2.5 py-0.5 rounded-full">Python</span><span class="bg-pink/10 text-pink text-xs font-semibold px-2.5 py-0.5 rounded-full">TensorFlow</span><span class="bg-pink/10 text-pink text-xs font-semibold px-2.5 py-0.5 rounded-full">Keras</span><span class="bg-pink/10 text-pink text-xs font-semibold px-2.5 py-0.5 rounded-full">Transfer Learning</span></div>
+                        <p class="text-[#f0e5cf] mb-4 text-sm leading-relaxed">Engineered a diagnostic deep learning model for binary classification of pneumonia from chest X-rays, architecting a CNN that leverages a VGG16 backbone and achieving 93% accuracy.</p>
+                        <div class="flex flex-wrap gap-2 mt-auto pt-4"><span class="bg-rose/10 text-rose text-xs font-semibold px-2.5 py-0.5 rounded-full">Python</span><span class="bg-rose/10 text-rose text-xs font-semibold px-2.5 py-0.5 rounded-full">TensorFlow</span><span class="bg-rose/10 text-rose text-xs font-semibold px-2.5 py-0.5 rounded-full">Keras</span><span class="bg-rose/10 text-rose text-xs font-semibold px-2.5 py-0.5 rounded-full">Transfer Learning</span></div>
                     </div>
-                     <div class="project-card bg-light-purple/50 backdrop-blur-sm rounded-lg overflow-hidden shadow-lg hover:shadow-pink/20 transition-all duration-300 border border-gray-800 p-6 flex flex-col">
+                     <div class="project-card bg-dark-gray rounded-lg overflow-hidden shadow-lg border border-gray-800 p-6 flex flex-col">
                         <h3 class="text-xl font-bold text-white mb-2">Sony-SSUP Embedded Dev</h3>
-                        <p class="text-[#E6A4B4] mb-4 text-sm">Developed an Edge-based Cyber-Physical System (CPS) for Smart Polyhouse Solar Drying. Used Daisy Seed, SPRESENSE, and ESP32 for real-time data acquisition and IoT sensor network integration.</p>
-                        <div class="flex flex-wrap gap-2 mt-auto"><span class="bg-pink/10 text-pink text-xs font-semibold px-2.5 py-0.5 rounded-full">Embedded C</span><span class="bg-pink/10 text-pink text-xs font-semibold px-2.5 py-0.5 rounded-full">RTOS</span><span class="bg-pink/10 text-pink text-xs font-semibold px-2.5 py-0.5 rounded-full">IoT</span><span class="bg-pink/10 text-pink text-xs font-semibold px-2.5 py-0.5 rounded-full">Hardware</span></div>
+                        <p class="text-[#f0e5cf] mb-4 text-sm leading-relaxed">Developed an Edge-based Cyber-Physical System (CPS) for Smart Polyhouse Solar Drying. Used Daisy Seed, SPRESENSE, and ESP32 for real-time data acquisition and IoT sensor network integration.</p>
+                        <div class="flex flex-wrap gap-2 mt-auto pt-4"><span class="bg-rose/10 text-rose text-xs font-semibold px-2.5 py-0.5 rounded-full">Embedded C</span><span class="bg-rose/10 text-rose text-xs font-semibold px-2.5 py-0.5 rounded-full">RTOS</span><span class="bg-rose/10 text-rose text-xs font-semibold px-2.5 py-0.5 rounded-full">IoT</span><span class="bg-rose/10 text-rose text-xs font-semibold px-2.5 py-0.5 rounded-full">Hardware</span></div>
                     </div>
                 </div>
                 <div class="text-center mt-12">
-                    <a href="https://github.com/Gangar" target="_blank" rel="noopener noreferrer" class="bg-pink text-[#161625] font-bold py-3 px-8 rounded-md transition-transform transform hover:scale-105 inline-block">
-                        View All Projects
+                    <a href="https://github.com/Gangar" target="_blank" rel="noopener noreferrer" class="bg-rose text-black font-bold py-3 px-8 rounded-md transition-transform transform hover:scale-105 inline-block">
+                        View More on GitHub &rarr;
                     </a>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="py-20 md:py-32 fade-in-section"><div class="container mx-auto px-6 text-center"><h2 class="text-3xl font-bold text-white mb-4">Get In Touch</h2><p class="text-[#E6A4B4] max-w-2xl mx-auto mb-8">My inbox is always open. Feel free to reach out with any questions or opportunities!</p><a href="mailto:togangaramesh@gmail.com" class="text-pink text-2xl font-mono p-4 bg-light-purple/50 backdrop-blur-sm rounded-md hover-bg-pink-tint transition-colors">togangaramesh@gmail.com</a><p class="text-gray-600 text-xs mt-24">&copy; 2025 Ganga Ramesh. All Rights Reserved.</p></div></section>
+        <section id="contact" class="py-20 md:py-32 fade-in-section"><div class="container mx-auto px-6 text-center"><h2 class="text-3xl font-bold text-white mb-4">Get In Touch</h2><p class="text-[#f0e5cf] max-w-2xl mx-auto mb-8">My inbox is always open. Feel free to reach out with any questions or opportunities!</p><a href="mailto:togangaramesh@gmail.com" class="text-rose text-2xl font-mono p-4 bg-dark-gray/50 rounded-md hover-bg-rose-tint transition-colors">togangaramesh@gmail.com</a><p class="text-gray-500 text-xs mt-24">&copy; 2025 Ganga Ramesh. All Rights Reserved.</p></div></section>
     </main>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
-        // --- 3D Background ---
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg-canvas'), alpha: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-
-        const particlesGeometry = new THREE.BufferGeometry;
-        const particlesCnt = 5000;
-        const posArray = new Float32Array(particlesCnt * 3);
-        for(let i = 0; i < particlesCnt * 3; i++) {
-            posArray[i] = (Math.random() - 0.5) * 5;
-        }
-        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-        const particlesMaterial = new THREE.PointsMaterial({ size: 0.005, color: 0xFF6B6B }); // Pink particles
-        const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
-        scene.add(particlesMesh);
-        camera.position.z = 2;
-
-        let mouseX = 0;
-        let mouseY = 0;
-        document.addEventListener('mousemove', (event) => {
-            mouseX = event.clientX;
-            mouseY = event.clientY;
-        });
-
-        const clock = new THREE.Clock();
-        const animate = () => {
-            requestAnimationFrame(animate);
-            const elapsedTime = clock.getElapsedTime();
-            particlesMesh.rotation.y = -0.1 * elapsedTime;
-            if (mouseX > 0) {
-                particlesMesh.rotation.x = -mouseY * (elapsedTime * 0.00008);
-                particlesMesh.rotation.y = -mouseX * (elapsedTime * 0.00008);
-            }
-            renderer.render(scene, camera);
-        };
-        animate();
-
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
-
-        // --- Header Scroll Effect ---
-        const header = document.getElementById('main-header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 10) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-        
-        // --- General UI Logic ---
         document.addEventListener('DOMContentLoaded', () => {
+            const header = document.getElementById('main-header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const closeMenuButton = document.getElementById('close-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
             
-            mobileMenuButton.addEventListener('click', () => mobileMenu.classList.remove('translate-x-full'));
-            closeMenuButton.addEventListener('click', () => mobileMenu.classList.add('translate-x-full'));
-            mobileMenuLinks.forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('translate-x-full')));
+            const openMenu = () => mobileMenu.classList.remove('translate-x-full');
+            const closeMenu = () => mobileMenu.classList.add('translate-x-full');
+
+            mobileMenuButton.addEventListener('click', openMenu);
+            closeMenuButton.addEventListener('click', closeMenu);
+            mobileMenuLinks.forEach(link => link.addEventListener('click', closeMenu));
             
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) { 
                     e.preventDefault(); 
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' }); 
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
                 });
             });
 
             const sections = document.querySelectorAll('.fade-in-section');
-            const observer = new IntersectionObserver((entries) => {
+            const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => { 
                     if (entry.isIntersecting) { 
                         entry.target.classList.add('is-visible'); 
                         observer.unobserve(entry.target); 
                     } 
                 });
-            }, { threshold: 0.15 });
+            }, { threshold: 0.1 });
             sections.forEach(section => observer.observe(section));
         });
     </script>
